@@ -26,3 +26,37 @@ customerask=list(map(int, input('손님이 확인요청한 부품들을 입력�
 for i in range(M):
     target=customerask[i]    
     print(binary_search(array,target,0,N-1),end=' ')
+
+#--------------------------------------------------------------------------------------
+
+#이진탐색 함수는 조금의 변형도 없이 그대로 두고 아래 부분들 에서 이진탐색 함수를 그대로 활용하는 동빈님 코드
+
+#동빈님 풀이
+
+def binary_search(array, target, start, end):
+    while start<=end:
+        mid=(start+end)//2
+        if array[mid]==target:
+            return mid
+        elif array[mid]>target:
+            end=mid-1
+        else:
+            start=mid+1
+    return None
+    
+#입력받기
+n=int(input('가게 안의 총부품 개수를 입력해주세요 : '))
+array=list(map(int, input('가게 안에 총부품들을 입력해주세요 : ').split()))
+array.sort()
+
+m=int(input('손님이 확인요청한 총 부품 개수를 입력해주세요 : '))
+customerask=list(map(int, input('손님이 확인요청한 부품들을 입력해주세요 : ').split()))
+
+for i in customerask:
+    result=binary_search(array,i,0,n-1) #동빈님은 target 대신 바로 i 대입해주심 : 이게 센스
+    if result!=None:
+        print('yes',end=' ')
+    else:
+        print('no',end=' ')
+        
+#--------------------------------------------------------------------------------------
