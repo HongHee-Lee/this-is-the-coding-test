@@ -1,0 +1,91 @@
+
+
+#-------------------------------------------------------------------------------
+
+#이것이 코딩이다
+# 이진 탐색 소스코드 구현 (반복문)
+def binary_search(array, target, start, end):
+    while start <= end:
+        mid = (start + end) // 2
+        # 찾은 경우 중간점 인덱스 반환
+        if array[mid] == target:
+            return mid
+        # 중간점의 값보다 찾고자 하는 값이 작은 경우 왼쪽 확인
+        elif array[mid] > target:
+            end = mid - 1
+        # 중간점의 값보다 찾고자 하는 값이 큰 경우 오른쪽 확인
+        else:
+            start = mid + 1
+    return None
+
+# n(원소의 개수)과 target(찾고자 하는 값)을 입력 받기
+n, target = list(map(int, input('n(원소의 개수)과 target(찾고자 하는 값)').split()))
+# 전체 원소 입력 받기
+array = list(map(int, input('전체 원소 입력 받기').split()))
+
+# 이진 탐색 수행 결과 출력
+result = binary_search(array, target, 0, n - 1)
+if result == None:
+    print("원소가 존재하지 않습니다.")
+else:
+    print(result + 1)
+
+import sys
+
+# 하나의 문자열 데이터 입력 받기
+input_data = sys.stdin.readline().rstrip()
+# 입력 받은 문자열 그대로 출력하기
+print(input_data)
+
+#------------------------------------------------------------------------------
+
+#최인선 학생 코드 참고
+
+import numpy as np
+
+def binary_search() :    
+    arr = [1,7,11,12,14,23,33,47,51,64,67,77,139,672,871,1000]
+    compNum = int(input('이진탐색으로 배열에서 검색할 숫자가 무엇인가요 ? '))
+
+    for i in range(1,len(arr)) :
+        length = int(len(arr)/2)
+
+        if arr[length] > compNum :
+            del(arr[length :])
+        elif arr[length] < compNum :
+            del(arr[: length])
+        elif arr[length] == compNum : 
+            return '배열에 %d 숫자가 검색이 됩니다.' %(arr[length])
+        else :
+            return arr[length]
+    else : 
+        return '해당 숫자가 없습니다.'
+
+print(binary_search())
+
+#-----------------------------------------------------------------------------
+
+#양수영 학생 코드(재귀함수를 이용)
+
+nlist = [1,7,11,12,14,23,33,47,51,64,67,77,139,672,871,1000]
+target = int(input('이진탐색으로 배열에서 검색할 숫자가 무엇인가요?'))
+
+def binary_search(target) : 
+    global nlist
+    try : 
+        if len(nlist) % 2 == 0 : 
+            half = int(len(nlist)/2)-1
+        else :
+            half = int(len(nlist)/2)
+        if nlist[half] > target :
+            nlist = nlist[0 : half]
+            binary_search(target)
+        elif nlist[half] < target :
+            nlist = nlist[half+1 :]
+            binary_search(target)
+        elif nlist[half] == target : 
+            return(print('배열에서 {0} 숫자가 검색이 됩니다'.format(target)))
+    except :
+        return(print('해당 숫자가 없습니다.'))
+
+binary_search(target)
