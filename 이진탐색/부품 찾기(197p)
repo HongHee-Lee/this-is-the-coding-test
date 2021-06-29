@@ -1,1 +1,27 @@
 
+8 3 7 9 2
+5 7 9
+
+def binary_search(array, target, start, end):
+    while start<=end:
+        mid=(start+end)//2
+        if array[mid]==target:
+            return 'yes'
+        elif array[mid]>target:
+            end=mid-1
+        else:
+            start=mid+1
+    return 'no'
+    
+#입력받기
+N=int(input('가게 안의 총부품 개수를 입력해주세요 : '))
+array=list(map(int, input('가게 안에 총부품들을 입력해주세요 : ').split()))
+array.sort()
+
+M=int(input('손님이 확인요청한 총 부품 개수를 입력해주세요 : '))
+customerask=list(map(int, input('손님이 확인요청한 부품들을 입력해주세요 : ').split()))
+
+#부품을 순서대로 확인해 있으면 yes, 없으면 no를 출력하기 
+for i in range(M):
+    target=customerask[i]    
+    print(binary_search(array,target,0,N-1),end=' ')
