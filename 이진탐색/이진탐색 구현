@@ -91,6 +91,32 @@ def binary_search(target) :
 binary_search(target)
 
 #-----------------------------------------------------------------------------------
+#권영훈 학생의 코드 (참고할점 : index 함수로 리스트 요소의 위치 값 반환)
+
+def binary_search():
+    nlist = [1,7,11,12,14,23,33,47,51,64,67,77,139,672,871,1000]
+    nlist.sort()
+    count=0
+    low=0
+    high=len(nlist)
+    target=int(input('이진탐색으로 배열에서 검색할 숫자가 무엇인가요 ?'))
+    while count<len(nlist):
+        count+=1
+        mid=int((low+high)/2)
+        if target==nlist[mid]:
+            return ("배열에 %d 이 검색이 됩니다" %target)
+            break    
+        elif target<=nlist[mid]:
+            high=nlist.index(nlist[mid])                        #(참고할점 : index 함수로 리스트 요소의 위치 값 반환)
+        elif target>=nlist[mid]:
+            low=nlist.index(nlist[mid])                         #(참고할점 : index 함수로 리스트 요소의 위치 값 반환)
+    else:
+        return('해당 값을 검색할 수 없습니다')
+
+print(binary_search())
+
+#-----------------------------------------------------------------------------------
+
 #혼자 공부했을때 발견한 문제점
 #이것이 코딩이다
 # 이진 탐색 소스코드 구현 (반복문)
