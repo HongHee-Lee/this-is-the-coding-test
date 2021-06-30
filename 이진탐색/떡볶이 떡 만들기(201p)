@@ -1,1 +1,16 @@
+#순수한 내 코드
 
+n,m=map(int, input('떡의 개수와 떡의 길이를 입력해주세요. : ').split())
+x=list(map(int, input('떡의 개별 높이를 입력해주세요. : ').split()))
+
+
+for i in reversed(range(max(x))):
+    s=0
+    for j in x:
+        if j>i:
+           s+=j-i
+    if s==m:
+        print(i)
+        break
+    
+#-------------------------------------------------------------------------------
