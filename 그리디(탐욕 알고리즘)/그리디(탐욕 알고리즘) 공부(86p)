@@ -1,1 +1,11 @@
+#거슬러 줘야할 동전의 최소 개수 구하기
 
+change=1260
+coin=[100,500,10,50]
+coin.sort(reverse=True)
+
+n=0
+for i in coin:
+    n+=change//i
+    change%=i
+print(n)
