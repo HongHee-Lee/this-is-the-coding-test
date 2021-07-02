@@ -1,4 +1,4 @@
-#답안 작성중
+#큰 수의 법칙(92p)
 
 n,m,k=map(int, input('n,m,k를 입력해주세요. : ').split())
 x=list(map(int,input('n개의 자연수를 입력해주세요 : ').split()))
@@ -9,7 +9,7 @@ if m<=k:
     s+=x[0]*m
 else:
     if m%(k+1)==0:
-        s+=(x[0]+x[1])*k*(m/(k+1))
+        s+=(x[0]*k+x[1])*(m/(k+1))
     else:
-        s+=((x[0]+x[1])*k*(m//(k+1))+x[0]*m%(k+1))
+        s+=((x[0]*k+x[1])*(m//(k+1))+x[0]*(m%(k+1)))
 print(s)
