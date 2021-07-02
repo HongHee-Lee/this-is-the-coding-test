@@ -1,0 +1,23 @@
+#숫자 카드 게임(96p)
+
+n,m=map(int,input('행과 열의 숫자를 입력해주세요. : ').split())
+
+d=[]
+for i in range(n):
+    array=list(map(int, input('입력한 열의 수만큼 행의 숫자를 입력해주세요. : ').split()))
+    d.append(min(array))
+print(max(d))
+
+#--------------------------------------------------------------------------------------------
+
+동빈님 코드
+# N, M을 공백을 기준으로 구분하여 입력 받기
+n, m = map(int, input().split())
+
+result = 0
+for i in range(n):
+    data = list(map(int, input().split()))
+    min_value = min(data)                         #이하 두줄이 차이점. 행마다 일일이 최소값 찾아서 비교해줌.
+    result = max(result, min_value)
+
+print(result) # 최종 답안 출력
