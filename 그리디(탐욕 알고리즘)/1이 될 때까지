@@ -1,0 +1,17 @@
+#1이 될 때까지 (내 풀이)
+
+n,k=map(int, input('n과 k를 입력해주세요. : ').split())
+
+count=0
+while True:
+    if n%k==0:
+        n=n/k
+        count+=1
+        if n==1:
+            break
+    else:
+        n=n-1
+        count+=1
+        if n==1:
+            break
+print(count)
