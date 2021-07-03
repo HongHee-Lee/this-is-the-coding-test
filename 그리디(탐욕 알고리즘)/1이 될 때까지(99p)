@@ -5,12 +5,12 @@ n,k=map(int, input('n과 k를 입력해주세요. : ').split())
 count=0
 while True:
     if n%k==0:
-        n=n/k
+        n/=k
         count+=1
         if n==1:
             break
     else:
-        n=n-1
+        n-=1
         count+=1
         if n==1:
             break
