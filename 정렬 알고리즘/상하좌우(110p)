@@ -1,0 +1,103 @@
+작동안됨 공부하는 중
+
+
+n=int(input('n을 입력해주세요. : '))
+array=[[0 for i in range(n)] for j in range(n)]
+array[0][0]=1
+
+run=input('이동계획을 입력해주세요. : ').split()
+
+for r in run:
+    for i,j in zip(range(n), range(n)):
+        if r=='L' and array[i][j]==1:
+            if j==0:
+                break
+            array[i][j],array[i][j-1]=array[i][j-1],array[i][j]
+
+        elif r=='R' and array[i][j]==1:
+            if j==4:
+                break
+            array[i][j],array[i][j+1]=array[i][j+1],array[i][j]
+               
+
+        elif r=='U' and array[i][j]==1:
+            if i==0:
+                break
+            array[i][j],array[i-1][j]=array[i-1][j],array[i][j]
+
+        else: #r=='D' and array[i][j]==1:
+            if i==4:
+                break
+            array[i][j],array[i+1][j]=array[i+1][j],array[i][j]
+    break
+
+for i in range(5):
+    print(array[i])
+    
+
+array=[[0 for i in range(5)] for j in range(5)]
+array[0][0]=1
+for i,j in zip(range(5), range(5)):
+    print(array[i])
+    
+    
+for i in range(n):
+    for j in range(n):
+        if array[i][j]==1:
+            print(i, j)
+
+r=='D'    
+for i in range(5):
+    for j in range(5):
+        if array[i][j]==1:
+            array[i][j],array[i+1][j]=array[i+1][j],array[i][j]
+
+
+array[0][4],array[1][4]=array[1][4],array[0][4]
+array[4][4],array[3][4]=array[3][4],array[4][4]            
+for i in range(5):
+    print(array[i])
+
+
+
+
+
+n=int(input('n을 입력해주세요. : '))
+array=[[0 for i in range(n)] for j in range(n)]
+array[0][0]=1
+
+run=input('이동계획을 입력해주세요. : ').split()
+
+for r in run:
+    for i in range(n):
+        for j in range(n):
+            if r=='L' and array[i][j]==1:
+                if j==0:
+                    break
+                array[i][j]=0
+                array[i][j-1]=1
+                break
+
+            elif r=='R' and array[i][j]==1:
+                if j==4:
+                    break
+                array[i][j]=0
+                array[i][j+1]=1
+                break
+
+            elif r=='U' and array[i][j]==1:
+                if i==0:
+                    break
+                array[i][j]=0
+                array[i-1][j]=1
+                break
+
+            elif r=='D' and array[i][j]==1:
+                if i==4:
+                    break
+                array[i][j]=0
+                array[i+1][j]=1
+                break
+            
+for i in range(5):
+    print(array[i])
