@@ -4,252 +4,137 @@ Stackoverflow 질문
 
 
 in array(5,5) 
-(1,1) (1,2) (1,3) (1,4) (1,5)
-(2,1) (2,2) (2,3) (2,4) (2,5)
-(3,1) (3,2) (3,3) (3,4) (3,5)
-(4,1) (4,2) (4,3) (4,4) (4,5)
-(5,1) (5,2) (5,3) (5,4) (5,5)
-we start from (1,1)
-'L' means 'move to the left for 1' 
-'R' means 'move to the right for 1'
-'U' means 'move to the upper side for 1 
-'D' means 'move to the down side for 1
+        ​
+   ​(1,1) (1,2) (1,3) (1,4) (1,5) 
+   ​(2,1) (2,2) (2,3) (2,4) (2,5) 
+   ​(3,1) (3,2) (3,3) (3,4) (3,5) 
+   ​(4,1) (4,2) (4,3) (4,4) (4,5) 
+   ​(5,1) (5,2) (5,3) (5,4) (5,5) 
+we start from (1,1) /
+'L' means 'move to the left for 1' /
+'R' means 'move to the right for 1' /
+'U' means 'move to the upper side for 1 / 
+'D' means 'move to the down side for 1 /
 
-If you put
-5
-R R 
+If you put /
+5 /
+R R / 
 then you will get (1,3)
 
-If you put
-5
-R R D
+If you put /
+5 /
+R R D /
 then you will get (2,3)
 
-If you put
-5
-R R D L
+If you put /
+5 /
+R R D L /
 then you will get (2,2) 
 
-But if you put 
-5
-R R U
-then you will get (1,3) instead (0,3)
-even though you put 'U'(go upper side), there is no way to go.
-So the answer is not (0,3), but (1,3)
+But if you put /
+5 /
+R R U /
+then you will get (1,3) instead (0,3) /
+even though you put 'U'(go upper side), there is no way to go. /
+So the answer is not (0,3), but (1,3) /
 
 
 #------------------------------------------
 
-n=int(input('insert n : '))
-x,y=0,0
-run=input('move plan : ').split()
 
-for r in run:
-    if r=='L':
-        if y==0:
-            continue
-        else:
-            y-=1
+   ​n=int(input('insert n : '))
 
-    elif r=='R':
-        if y==n-1:
-            continue
-        else:
-            y+=1
-               
-    elif r=='U':
-        if x==0:
-            continue
-        else:    
-            x-=1
+   ​x,y=0,0
 
-    elif r=='D':
-        if x==n-1:
-            continue
-        else:
-            x+=1
-        
-    else:
-        continue
-print(x+1,y+1)
+   ​run=input('move plan : ').split()
+
+   ​for r in run:
+
+       ​if r=='L':
+           ​if y==0:
+               ​continue
+           ​else:
+               ​y-=1
+
+       ​elif r=='R':
+           ​if y==n-1:
+               ​continue
+           ​else:
+              ​y+=1
+              ​
+       ​elif r=='U':
+           ​if x==0:
+               ​continue
+           ​else:    
+               ​x-=1
+
+       ​elif r=='D':
+           ​if x==n-1:
+               ​continue
+           ​else:
+               ​x+=1
+       ​
+       ​else:
+           ​continue
+   ​print(x+1,y+1)
 
 #----------------------------------------------------------------------------------
 
 Above is the correct code which runs well and I originally intended to materialize.
 to get this code I tried many times to materialize codes.
 Here is the code not runs well but I don't know what is the problem with this code below
-Can you correct the code to run smoothly?
+.Can you correct the code to run smoothly?
 
 #-------------------------------------------------------------------------------------
 
-n=int(input('insert n : '))
-array=[[0 for i in range(n)] for j in range(n)]
-array[0][0]=1
+   ​n=int(input('insert n : '))
+   ​array=[[0 for i in range(n)] for j in range(n)]
+   ​array[0][0]=1
 
-run=input('move plan : ').split()
+   ​run=input('move plan : ').split()
 
-for r in run:
-    for i,j in zip(range(n), range(n)):
-        if r=='L' and array[i][j]==1:
-            if j==0:
-                continue
-            else:
-                array[i][j],array[i][j-1]=array[i][j-1],array[i][j]
+   ​for r in run:
+       ​for i,j in zip(range(n), range(n)):
+           ​if r=='L' and array[i][j]==1:
+               ​if j==0:
+                   ​continue
+               ​else:
+                   ​array[i][j],array[i][j-1]=array[i][j-1],array[i][j]
 
-        elif r=='R' and array[i][j]==1:
-            if j==n-1:
-                continue
-            else:
-                array[i][j],array[i][j+1]=array[i][j+1],array[i][j]
-               
-        elif r=='U' and array[i][j]==1:
-            if i==0:
-                continue
-            else:    
-                array[i][j],array[i-1][j]=array[i-1][j],array[i][j]
+           ​elif r=='R' and array[i][j]==1:
+               ​if j==n-1:
+                   ​continue
+               ​else:
+                   ​array[i][j],array[i][j+1]=array[i][j+1],array[i][j]
+              ​
+           ​elif r=='U' and array[i][j]==1:
+               ​if i==0:
+                   ​continue
+               ​else:    
+                   ​array[i][j],array[i-1][j]=array[i-1][j],array[i][j]
 
-        elif r=='D' and array[i][j]==1:
-            if i==n-1:
-                continue
-            else:
-                array[i][j],array[i+1][j]=array[i+1][j],array[i][j]
-        
-        else:
-            continue
-for i in range(n):
-    print(array[i])
-
--------------
-put
-5
-R R R U D D
-
-out
-3 4
-
-
-n=int(input('insert n : '))
-x,y=0,0
-run=input('move plan : ').split()
-
-for r in run:
-    if r=='L':
-        if y==0:
-            continue
-        else:
-            y-=1
-
-    elif r=='R':
-        if y==n-1:
-            continue
-        else:
-            y+=1
-               
-    elif r=='U':
-        if x==0:
-            continue
-        else:    
-            x-=1
-
-    elif r=='D':
-        if x==n-1:
-            continue
-        else:
-            x+=1
-        
-    else:
-        continue
-print(x+1,y+1)
-
-#------------------------------------------
-in array(5,5) 
-(1,1) (1,2) (1,3) (1,4) (1,5)
-(2,1) (2,2) (2,3) (2,4) (2,5)
-(3,1) (3,2) (3,3) (3,4) (3,5)
-(4,1) (4,2) (4,3) (4,4) (4,5)
-(5,1) (5,2) (5,3) (5,4) (5,5)
-we start from (1,1)
-'L' means 'move to the left for 1' 
-'R' means 'move to the right for 1'
-'U' means 'move to the upper side for 1 
-'D' means 'move to the down side for 1
-
-If you put
-5
-R R 
-then you will get (1,3)
-
-If you put
-5
-R R D
-then you will get (2,3)
-
-If you put
-5
-R R D L
-then you will get (2,2) 
-
-But if you put 
-5
-R R U
-then you will get (1,3) instead (0,3)
-even though you put 'U'(go upper side), there is no way to go.
-So the answer is not (0,3), but (1,3)
-
-#----------------------------------------------------------------------------------
-
-Above is the correct code which runs well and I originally intended to materialize.
-to get this code I tried many times to materialize codes.
-Here is the code not runs well but I don't know what is the problem with this code below
-Can you correct the code to run smoothly?
-
-
-
-n=int(input('insert n : '))
-array=[[0 for i in range(n)] for j in range(n)]
-array[0][0]=1
-
-run=input('move plan : ').split()
-
-for r in run:
-    for i,j in zip(range(n), range(n)):
-        if r=='L' and array[i][j]==1:
-            if j==0:
-                continue
-            else:
-                array[i][j],array[i][j-1]=array[i][j-1],array[i][j]
-
-        elif r=='R' and array[i][j]==1:
-            if j==n-1:
-                continue
-            else:
-                array[i][j],array[i][j+1]=array[i][j+1],array[i][j]
-               
-        elif r=='U' and array[i][j]==1:
-            if i==0:
-                continue
-            else:    
-                array[i][j],array[i-1][j]=array[i-1][j],array[i][j]
-
-        elif r=='D' and array[i][j]==1:
-            if i==n-1:
-                continue
-            else:
-                array[i][j],array[i+1][j]=array[i+1][j],array[i][j]
-        
-        else:
-            continue
-for i in range(n):
-    print(array[i])
+           ​elif r=='D' and array[i][j]==1:
+               ​if i==n-1:
+                   ​continue
+               ​else:
+                   ​array[i][j],array[i+1][j]=array[i+1][j],array[i][j]
+       ​
+           ​else:
+               ​continue
+   ​for i in range(n):
+       ​print(array[i])
 
 -------------
-put
-5
-R R R U D D
-
-out
-3 4
-
+   ​"""
+   ​put
+   ​5
+   ​R R R U D D
+   ​
+   ​out
+   ​3 4
+   ​"""
+---------------
+the problem is - as I run the code, it stops in position (1,2)..
 
 
 #---------------------------------------------------------------------------------
