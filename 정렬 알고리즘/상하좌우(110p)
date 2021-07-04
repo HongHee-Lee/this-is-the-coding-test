@@ -138,6 +138,89 @@ the problem is - as I run the code, it stops in position (1,2)..
 
 
 #---------------------------------------------------------------------------------
+
+    
+
+n=int(input('insert n : '))
+array=[[0 for i in range(n)] for j in range(n)]
+array[0][0]=1
+
+run=input('move plan : ').split()
+
+for r in run:
+    for i in range(n):
+        for j in range(n):
+            if r=='L' and array[i][j]==1:
+                if j==0:
+                    continue
+                else:
+                    array[i][j],array[i][j-1]=array[i][j-1],array[i][j]
+                        
+            elif r=='R' and array[i][j]==1:
+                if j==n-1:
+                    continue
+                else:
+                    array[i][j],array[i][j+1]=array[i][j+1],array[i][j]
+                    break
+            
+            elif r=='U' and array[i][j]==1:
+                if i==0:
+                    continue
+                else:    
+                    array[i][j],array[i-1][j]=array[i-1][j],array[i][j]
+                                    
+            elif r=='D' and array[i][j]==1:               #문제가 되는 부분 D가 멈추지 않아..
+                if i==n-1:
+                    continue
+                else:
+                    array[i][j],array[i+1][j]=array[i+1][j],array[i][j]
+                    
+
+for i in range(n):
+    print(array[i])
+    
+    
+move plan : R R R
+[0, 0, 0, 1, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+
+
+move plan : L
+[0, 0, 1, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+
+
+move plan : U
+[0, 0, 1, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+
+
+move plan : D
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 1, 0, 0]               #뚝 떨어지는 D
+
+
+move plan : U
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 0, 0, 0]
+[0, 0, 1, 0, 0]
+[0, 0, 0, 0, 0]
+
+
+#-------------------------------------------------------------------------------------
 작동안되는 노력의 흔적들
 
 
@@ -248,3 +331,8 @@ for r in run:
             
 for i in range(5):
     print(array[i])
+    
+    
+    #-------------------------------------------------------------------------------------------------
+    
+    
