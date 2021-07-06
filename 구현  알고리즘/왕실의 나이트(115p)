@@ -1,11 +1,40 @@
+#count=0 이하로 한번만에 코드 작성 성공!!! bravo!!!
+
 
 spot=input('좌표를 입력해주세요. : ')
-column=ord(spot[0])-97
-row=int(spot[1])-1
+column=ord(spot[0])-96
+row=int(spot[1])
 
+count=0
 
+if column-2 >= 1 and column-2 <=6:
+    if row+1 <= 8 and row+1 >= 2:
+        count+=1
+    if row-1 >= 1 and row-1 <= 7:
+        count+=1
 
+if column+2 <=8 and column+2 >= 3:
+    if row+1 <= 8 and row+1 >= 2:
+        count+=1
+    if row-1 >= 1 and row-1 <= 7:
+        count+=1
+        
+if row-2 >= 1 and row-2 <=6:
+    if column+1 <= 8 and column+1 >= 2:
+        count+=1
+    if column-1 >= 1 and column-1 <= 7:
+        count+=1
 
+if row+2 <= 8 and row+2 >= 3:
+    if column+1 <= 8 and column+1 >= 2:
+        count+=1
+    if column-1 >= 1 and column-1 <= 7:
+        count+=1
+
+print(count)
+
+#------------------------------------------
+혼자 공부
 ord('a') #97
 chr(97) #'a'
 
