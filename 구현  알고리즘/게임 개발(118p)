@@ -1,0 +1,80 @@
+#내코드(한번만에 작성 성공!)
+
+n,m=map(int, input('3이상의 n과 50이하의 m을 입력해주세요. : ').split())
+a,b,d=map(int, input('캐릭터의 시작 좌표와 방향을 입력해주세요.').split())
+array=[list(map(int,input('각 줄의 맵 정보를 입력해주세요. : ').split())) for i in range(n)]
+
+while True:
+        
+    array[a][b]=2
+    
+    if d==0:
+        d=3
+    else:
+        d-=1
+    
+    
+    if d==0 and array[a-1][b]==0:
+        a=a-1
+    
+    elif d==1 and array[a][b+1]==0:
+        b=b+1
+        
+    elif d==2 and array[a+1][b]==0:
+        a=a+1
+    
+    elif d==3 and array[a][b-1]==0:
+        b=b-1
+    
+    
+    if array[a-1][b]!=0 and array[a][b+1]!=0 and array[a+1][b]!=0 and array[a][b-1]!=0:
+        
+        if d==0: 
+            if array[a+1][b]==0:
+                a=a+1
+            elif array[a+1][b]==1:
+                break
+        
+        elif d==1:
+            if array[a][b-1]==0:
+                b=b-1
+            elif array[a][b-1]==1:
+                break
+            
+        elif d==2:
+            if array[a-1][b]==0:
+                a=a-1
+            elif array[a-1][b]==1:
+                break
+            
+        elif d==3:
+            if array[a][b+1]==0:
+                b=b+1
+            elif array[a][b+1]==1:
+                break
+
+count=0        
+for i in range(n):
+    for j in range(m):
+        if array[i][j]==2:
+            count+=1
+
+print(count)
+
+#-----------------------------------------
+
+"""
+input
+4 4
+1 1 0
+1 1 1 1
+1 0 0 1
+1 1 0 1
+1 1 1 1
+
+output
+3
+"""
+
+#-----------------------------------------
+
