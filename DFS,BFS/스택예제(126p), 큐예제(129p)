@@ -44,3 +44,32 @@ print(stack[::-1]) # 최상단 원소부터 출력
 
 #-----------------------------------------------------------------------------
 
+#큐
+#먼저 온 사람이 먼저 들어가게 된다. 나중에 온 사람일수록 나중에 들어가기 때문에 흔히
+#'공정한' 자료구조라고 비유된다. 이러한 구조를 선입선출(First In First Out)구조라고 한다.
+
+
+from collections import deque
+
+array=list(map(str,input('자료구조를 입력해주세요. : ').split()))
+
+queue=deque()   #큐를 구현하기 위해 deque 라이브러리 사용                    
+for a in array:
+    if a=='del':
+        queue.popleft()
+    else:
+        queue.append(a)
+print(queue) #최하단 원소부터 출력
+#print(queue[::-1]) ---> 이거 안먹힘.
+#print(queue.reverse()) ---> 이거도 안먹힘.
+queue.reverse() #최상단 원소부터 출력
+print(queue)
+
+
+"""
+input
+5 2 3 7 del 1 4 del
+output
+['3', '7', '1', '4']
+['4', '1', '7', '3']
+"""
