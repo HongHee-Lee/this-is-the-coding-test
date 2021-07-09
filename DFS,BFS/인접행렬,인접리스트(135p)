@@ -1,0 +1,56 @@
+#인접 리스트 방식(내코드)
+
+n,m=map(int, input('insert the number of rows and columns : ').split())
+array=[list(map(int,input('insert each row: ').split())) for i in range(n)]
+
+for i in range(n):
+    for j in range(m):
+        if array[i][j]==99999999:
+            array[i][j]='INF'
+
+for i in range(n):
+    print(array[i])
+
+"""
+input
+3 3
+
+0 7 5
+7 0 99999999
+5 99999999 0
+
+output
+[0, 7, 5]
+[7, 0, 'INF']
+[5, 'INF', 0]
+"""
+
+n,m=map(int, input('insert the number of rows and columns : ').split())
+array=[list(map(str,input('insert each row: ').split())) for i in range(n)]
+
+for i in range(n):
+    for j in range(m):
+        if array[i][j]=='INF':
+            array[i][j]=99999999
+            
+for i in range(n):
+    for j in range(m):
+        array[i][j]=int(array[i][j])
+
+for i in range(n):
+    print(array[i])
+    
+"""
+input
+3 3
+0 7 5
+7 0 INF
+5 INF 0
+
+output
+[0, 7, 5]
+[7, 0, 99999999]
+[5, 99999999, 0]
+"""
+
+#-------------------------------------------------------------------------------------------
