@@ -1,0 +1,95 @@
+
+#연결리스트 방식 내코드
+
+n=int(input('행의 수를 입력해주세요. : '))
+array=[list(input('노드 정보를 입력해주세요. : ').split()) for i in range(n)]
+print(array)
+
+"""
+input
+3
+(1,7) (2,5)
+(0,7)
+(0,5)
+output
+[['(1,7)', '(2,5)'], ['(0,7)'], ['(0,5)']]   #(1,7)이 튜플 형태가 아닌 문자로 출력되어 잘못된 답
+"""
+
+#---------------------------------------------------------------------------
+
+#동빈님 방식 코드
+
+graph=[[] for _ in range(3)]
+graph[0].append((1,7))
+graph[0].append((2,5))
+graph[1].append((0,7))
+graph[2].append((0,5))
+
+print(graph)
+
+"""
+output
+[[(1, 7), (2, 5)], [(0, 7)], [(0, 5)]
+"""
+
+#---------------------------------------------------------------------------
+
+#내 방식을 틀려서 동빈님 방식을 이용해 다시 작성
+n=int(input('행의 수를 입력해주세요. : '))
+array=[[] for _ in range(n)]
+
+while True:
+    try:
+        i,x,y=map(int, input('i,x,y의 정보를 입력해주세요. : ').split())
+    except ValueError:
+        print('정수 외의 다른 값을 입력했거나, end를 입력하여 종료합니다.')
+        break
+    array[i].append((x,y))
+print(array)
+"""
+input
+3
+0 1 7
+0 2 5
+1 0 7
+2 0 5
+end
+
+output
+정수 외의 다른 값을 입력했거나, end를 입력하여 종료합니다.
+[[(1, 7), (2, 5)], [(0, 7)], [(0, 5)]]
+"""
+
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+
+#try, except 새로 학습
+#https://codippa.com/check-if-string-is-integer-in-python/
+
+str = '123a'
+is_int = True
+try:
+   # convert to integer
+   int(str)
+except ValueError:
+   is_int = False
+# print result
+if is_int:
+   print('Integer value')
+else:
+   print('Not an integer')
+
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+
+#입력된 문자가 숫자인지 아닌지 체크하는 함수
+
+'5 Ways to Check if a String is Integer in Python'
+https://www.pythonpool.com/python-check-if-string-is-integer/
+    
+3.isdigit()
+s='222'
+print(s.isnumeric())
+
+s='abc'
+s.isdigit()
