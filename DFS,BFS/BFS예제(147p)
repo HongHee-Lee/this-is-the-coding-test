@@ -1,0 +1,98 @@
+#너비 우선 탐색 알고리즘인 BFS는 큐 자료구조에 기초한다는 점에서 구현이 간단하다. 
+#실제로 구현함에 있어 앞서 언급한 대로 deque 라이브러리를 사용하는 것이 좋으며 탐색을 수행함에 있어 O(N)의 시간이 소요된다.
+#일반적인 경우 실제 수행 시간은 DFS보다 좋은 편이라는 점까지만 추가로 기억하자.
+
+#tip 재귀 함수로 DFS를 구현하면 컴퓨터 시스템의 동작 특성상 실제 프로그램의 수행 시간은 느려질 수 있다. 
+#따라서 스택 라이브러리를 이용해 시간 복잡도를 완화하는 테크닉이 필요할 때도 있다.
+#다만, 이 내용은 책의 범위를 벗어나므로, 코딩 테슷트에에섯는 보통 DFS보다 BFS 구현이 조금 더 빠르게 동작한다는 정도로 기억하자
+
+<이것이 취업을 위한 코딩테스트다>, 나동빈 저, 146p
+
+#------------------------------------------------------------------------------------------------
+
+#동빈님 코드 아이디어 거의 그대로 활용 
+
+from collections import deque
+
+n=int(input('노드의 개수를 입력해주세요. : '))
+
+graph=[list(map(int, input('각 노드의 연결상태를 입력해주세요. : ').split())) for i in range(n)]
+
+visited=[False]*n
+
+def bfs(graph, start, visited):
+    queue=deque([start])   #deque 함수는 deque(1)로 바로 사용하면 
+                             #TypeError: 'int' object is not iterable 메세지뜸.
+                             #deque([1])처럼 사용해야함.
+    visited[start-1]=True
+    
+    while queue:
+        v=queue.popleft()
+        print(v, end=' ')
+        
+        for i in graph[v-1]:
+            if not visited[i-1]:    #마지막까지 틀린 i-1, 계속 i로 써놓고서 못잡아냄
+                queue.append(i)
+                visited[i-1]=True
+
+bfs(graph, 1, visited)
+        
+""" 
+input
+8
+
+2 3 8
+1 7
+1 4 5
+3 5
+3 4
+7
+2 6 8
+1 7
+
+output
+1 2 3 8 7 4 5 6 
+"""    
+
+#------------------------------------------------------------------------------
+
+#동빈님 코드 거의 그대로 쓴것
+
+from collections import deque
+
+n=int(input('노드의 개수를 입력해주세요. : '))
+graph=[list(map(int, input('처음에 블랭크 입력 이후 각 노드의 상태를 입력해주세요. : ').split())) for i in range(n+1)]
+visited=[False]*(n+1)
+
+def bfs(graph, start, visited):
+    visited[start]=True
+    queue=deque([start])
+    
+    while queue:
+        v=queue.popleft()
+        print(v, end=' ')
+        
+        for i in graph[v]:
+            if not visited[i]:
+                queue.append(i)
+                visited[i]=True
+
+bfs(graph, 1, visited)
+
+
+"""
+input
+8
+
+2 3 8
+1 7
+1 4 5
+3 5
+3 4
+7
+2 6 8
+1 7
+
+output
+1 2 3 8 7 4 5 6
+"""
