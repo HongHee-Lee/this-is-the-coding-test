@@ -61,16 +61,16 @@ def count_sort(array):
     for i in array2:
         li[i]+=1
 
-    global li2           #함수 바깥에서 li2를 별도로 확인하기 위해서 삽입한 코드
+    global li2                                       #함수 바깥에서 li2를 별도로 확인하기 위해서 삽입한 코드
     li2=[]        
     for i in range(len(li)):
-        for j in range(li[i]): #동빈님 코드에서 살짝 힌트 얻어온 부분
+        for j in range(li[i]):                       #동빈님 코드에서 살짝 힌트 얻어온 부분
             li2.append(i)
 
     for i in li2:
         print(i,end=' ')    
 
-count_sort('7 5 9 0 3 1 6 2 9 1 4 8 0 5 2')  #print(count_sort())식으로 출력하면 None 값이 붙어 출력되는 문제가 발생 
+count_sort('7 5 9 0 3 1 6 2 9 1 4 8 0 5 2')          #print(count_sort())식으로 출력하면 None 값이 붙어 출력되는 문제가 발생 
 
 """
 input
@@ -94,10 +94,10 @@ def count_sort(array):
     for i in array2:
         li[i]+=1
 
-    global li2           #함수 바깥에서 li2를 별도로 확인하기 위해서 삽입한 코드
+    global li2                                        #함수 바깥에서 li2를 별도로 확인하기 위해서 삽입한 코드
     li2=[]        
     for i in range(len(li)):
-        for j in range(li[i]): #동빈님 코드에서 살짝 힌트 얻어온 부분
+        for j in range(li[i]):                        #동빈님 코드에서 살짝 힌트 얻어온 부분
             print(i,end=' ')
 print(count_sort('7 5 9 0 3 1 6 2 9 1 4 8 0 5 2'))
 
@@ -111,12 +111,14 @@ def count_sort(array):
     for i in array2:
         li[i]+=1
 
-    global li2           #함수 바깥에서 li2를 별도로 확인하기 위해서 삽입한 코드
+    global li2                                         #함수 바깥에서 li2를 별도로 확인하기 위해서 삽입한 코드
     li2=[]        
     for i in range(len(li)):
-        for j in range(li[i]): #동빈님 코드에서 살짝 힌트 얻어온 부분
+        for j in range(li[i]):                         #동빈님 코드에서 살짝 힌트 얻어온 부분
             li2.append(str(i))
 
-    return ' '.join(li2)
+    return ' '.join(li2)                               #위에서 li2.append(i) 식으로 작성하면 아래같은 오류 뜸. / i를 str을 통해 문자로 바꿔준후 join 함수를 써야함.
+                                                       #join은 정수형을 합할 수 없다. join은 숫자형을 합할 수 있다.
+                                                       #TypeError: sequence item 0: expected str instance, int found
 
 print(count_sort('7 5 9 0 3 1 6 2 9 1 4 8 0 5 2'))
