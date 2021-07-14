@@ -54,7 +54,6 @@ return을 어떻게 설정해야할지 모르겠다.
 #함수 형태로 구현하는데 성공( https://stackoverflow.com/questions/44564414/how-to-use-a-return-statement-in-a-for-loop 참고)
 #global 변수 유용하게 써먹음(global 변수는 li2 선언 이전에 독립적으로 global li2식으로 입력해줘야한다는 것을 알음.
 
-
 def count_sort(array):
     array2=list(map(int, array.split()))
     li=[0]*(max(array2)+1)
@@ -71,7 +70,8 @@ def count_sort(array):
     for i in li2:
         print(i,end=' ')    
 
-print(count_sort('7 5 9 0 3 1 6 2 9 1 4 8 0 5 2'))
+count_sort('7 5 9 0 3 1 6 2 9 1 4 8 0 5 2')  #print(count_sort())식으로 출력하면 None 값이 붙어 출력되는 문제가 발생 
+
 """
 input
 7 5 9 0 3 1 6 2 9 1 4 8 0 5 2
@@ -80,8 +80,13 @@ output
 """
 #li2
 
-
+"""
+*함수에서 print를 안써도 함수명만으로 잘 작동한다!!!!!!!!!!!!!!!!!
+>>> func()      #works fine without `print()`
+https://stackoverflow.com/questions/17514106/python-how-to-remove-none-on-my-method-call
+"""
 #------------------------------------------------------------------------------
+
 def count_sort(array):
     array2=list(map(int, array.split()))
     li=[0]*(max(array2)+1)
@@ -94,4 +99,24 @@ def count_sort(array):
     for i in range(len(li)):
         for j in range(li[i]): #동빈님 코드에서 살짝 힌트 얻어온 부분
             print(i,end=' ')
+print(count_sort('7 5 9 0 3 1 6 2 9 1 4 8 0 5 2'))
+
+#-----------------------------------------------------------------------------
+#return을 사용하려는 고민의 흔적들
+
+def count_sort(array):
+    array2=list(map(int, array.split()))
+    li=[0]*(max(array2)+1)
+
+    for i in array2:
+        li[i]+=1
+
+    global li2           #함수 바깥에서 li2를 별도로 확인하기 위해서 삽입한 코드
+    li2=[]        
+    for i in range(len(li)):
+        for j in range(li[i]): #동빈님 코드에서 살짝 힌트 얻어온 부분
+            li2.append(str(i))
+
+    return ' '.join(li2)
+
 print(count_sort('7 5 9 0 3 1 6 2 9 1 4 8 0 5 2'))
