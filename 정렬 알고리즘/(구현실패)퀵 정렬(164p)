@@ -73,6 +73,35 @@ print(quick_sort(array))
 
 #----------------------------------------------------------------------
 
+#퀵정렬에 대한 이해를 떠올리며 코드를 그대로 복사해보기
+
+array=[5,7,9,0,3,1,6,2,4,8]
+
+def quick_sort(array, start, end):
+    if start >= end:
+        return
+    pivot=start
+    left=start+1
+    right=end
+    
+    while left <= right:
+        while left <= end and array[left] <= array[pivot]:
+            left+=1
+        while right > start and array[right] >= array[pivot]:
+            right-=1
+        if left > right:
+            array[right], array[pivot]=array[pivot], array[right]
+        else:   #엇갈리지 않은 경우
+            array[right],array[left]=array[left],array[right]
+    
+    quick_sort(array, start, right-1)
+    quick_sort(array, right+1, end)
+
+quick_sort(array,0,len(array)-1)
+print(array)
+
+#-------------------------------------------------------------------------
+
 #암기한 대로 써보기
 
 array = [5, 7, 9, 0, 3, 1, 6, 2, 4, 8]
