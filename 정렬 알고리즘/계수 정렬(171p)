@@ -51,7 +51,7 @@ output
 위 코드를 함수의 형태로 count_sort()함수에 넣어주려면 어떻게 해야 할까?
 return을 어떻게 설정해야할지 모르겠다.
 """
-#함수 형태로 구현하는데 성공
+#함수 형태로 구현하는데 성공( https://stackoverflow.com/questions/44564414/how-to-use-a-return-statement-in-a-for-loop 참고)
 #global 변수 유용하게 써먹음(global 변수는 li2 선언 이전에 독립적으로 global li2식으로 입력해줘야한다는 것을 알음.
 
 
