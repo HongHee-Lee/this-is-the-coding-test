@@ -6,7 +6,7 @@ li=[]
 for i in range(n):
     li.append(int(input('둘째줄 부터 정렬을 수행할 각 숫자를 입력해주세요. : ')))
 
-li.sort(reverse=True)
+li.sort(reverse=True)                                                          #동빈님은 이 부분을 li=sorted(li, reverse=True) 처럼 표현하였음.
     
 for i in range(0,n):
     print(li[i],end=' ')
