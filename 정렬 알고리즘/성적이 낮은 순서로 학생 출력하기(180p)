@@ -52,7 +52,7 @@ for student in array:
     
 #-------------------------------------------------------------------------------------------------
 
-#람다를 사용한 내코드
+#람다를 사용하고 아랫부분을 동빈님 코드에 맞게 수정한 내코드
 
 n=int(input('학생 수를 입력해주세요. : '))
 
@@ -61,8 +61,9 @@ for i in range(n):
     (x,y)=map(str, input('이름과 성적정보를 입력하세요. : ').split())
     li.append((x,y))
 
-li=sorted(li, key=lambda grade : int(grade[1]))
 
-for i in range(n):
-    print(li[i][0], end=' ')
-    
+li=sorted(li, key=lambda grade : int(grade[1]))
+print(li)
+
+for tup in li:
+    print(tup[0], end=' ')
