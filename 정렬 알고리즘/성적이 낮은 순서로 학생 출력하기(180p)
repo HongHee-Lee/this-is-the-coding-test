@@ -49,3 +49,20 @@ array = sorted(array, key=lambda student: student[1])                  #람다�
 # 정렬이 수행된 결과를 출력
 for student in array:
     print(student[0], end=' ')
+    
+#-------------------------------------------------------------------------------------------------
+
+#람다를 사용한 내코드
+
+n=int(input('학생 수를 입력해주세요. : '))
+
+li=[]
+for i in range(n):
+    (x,y)=map(str, input('이름과 성적정보를 입력하세요. : ').split())
+    li.append((x,y))
+
+li=sorted(li, key=lambda grade : int(grade[1]))
+
+for i in range(n):
+    print(li[i][0], end=' ')
+    
