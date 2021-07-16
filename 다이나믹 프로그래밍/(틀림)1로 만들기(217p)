@@ -3,6 +3,7 @@
 https://sihyungyou.github.io/baekjoon-1463/
 https://velog.io/@diddnjs02/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%B0%B1%EC%A4%80-1%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0  (알고리즘 특히 해설이 잘 되어 있음)
 https://kangmin1012.tistory.com/34
+점화식 세우는게 매우 어려웠음.
 
 """
 
@@ -57,6 +58,7 @@ print(d[x])
 #-------------------------------------------------------------------------------
 
 #동빈님 코드와 블로그 공부해서 내가 따라 작성한 코드
+
 x=int(input('정수 x를 입력해주세요. : '))
 
 d=[0]*30000
