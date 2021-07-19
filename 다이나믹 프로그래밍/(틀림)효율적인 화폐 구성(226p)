@@ -1,16 +1,13 @@
 """
 점화식 세우기
-전체 화폐 가치 : m , 최소한의 화폐 개수 : a(i), 화페의 단위 : k
-a(m-k)를 만드는 방법이 존재하는 경우 : a(m)=min(a(m),a(m-k)+1)
-a(m-k)를 만드는 방법이 존재하지 않는 경우, a()=10,001
+전체 화폐 가치 : i , 최소한의 화폐 개수 : a(i), 화페의 단위 : k
+a(i-k)를 만드는 방법이 존재하는 경우 : a(i)=min(a(i),a(i-k)+1)
+a(i-k)를 만드는 방법이 존재하지 않는 경우, a(i)=10,001
 """
-
-
-#내코드
-#gg
 
 n,m=map(int,input('화폐의 종류와 전체 화폐의 가치를 입력해주세요. : ').split())
 array=sorted([int(input('각 화폐의 가치를 입력해주세요. : ')) for i in range(n)], reverse=True)
+
 
 count=0
 for i in range(n):
@@ -20,4 +17,17 @@ for i in range(n):
         if m%array[i]==0:
             print(count)
             break
+        
+        
 
+
+
+n,m=map(int,input('화폐의 종류와 전체 화폐의 가치를 입력해주세요. : ').split())
+array=sorted([int(input('각 화폐의 가치를 입력해주세요. : ')) for i in range(n)], reverse=True)
+
+
+d=[10001]*(m+1)
+
+d[0]=0
+for i in range(m+1):
+    d[i]=min(d[i],d[i]-)
